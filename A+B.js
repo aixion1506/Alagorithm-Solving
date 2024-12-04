@@ -45,7 +45,6 @@ rl.on("close", () => {
     console.log(sum);
   });
 });
-
 /**
  * 원인분석
  * - input을 line단위로 던져서 Close때 로직을 돌리는 식으로 하려 했는데 시간 초과가 뜸..
