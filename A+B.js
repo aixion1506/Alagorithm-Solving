@@ -56,6 +56,37 @@
 /**
  * 3nd
  */
+// const readline = require("readline");
+
+// const rl = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout,
+// });
+
+// function sumNumbers(input) {
+//   const numbers = input.split(" ").map(Number);
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) {
+//     sum += numbers[i];
+//   }
+//   return sum;
+// }
+
+// rl.on("line", (line) => {
+//   const result = sumNumbers(line);
+//   console.log(result);
+// });
+
+// module.exports = { sumNumbers };
+/**
+ * 원인 분석
+ * - 현재 구조적으로 readline 인터페이스의 종료가 문제가 있음
+ * - 입력 받을 수 있는 상태가 지속되어 문제가 발생
+ */
+
+/**
+ * 4nd
+ */
 const readline = require("readline");
 
 const rl = readline.createInterface({
@@ -63,20 +94,23 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-function sumNumbers(input) {
-  const numbers = input.split(" ").map(Number);
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    sum += numbers[i];
-  }
-  return sum;
-}
+let inputLines = [];
+let T;
 
+// 첫 번째 줄에서 테스트 케이스의 개수 T를 읽습니다.
 rl.on("line", (line) => {
-  const result = sumNumbers(line);
-  console.log(result);
+  if (T === undefined) {
+    T = parseInt(line);
+  } else {
+    inputLines.push(line);
+    if (inputLines.length === T) {
+      // 모든 입력을 받았으면, 결과를 계산하고 출력합니다.
+      const results = inputLines.map((line) => {
+        const [A, B] = line.split(" ").map(Number);
+        return A + B;
+      });
+      console.log(results.join("\n")); // 결과를 한 번에 출력합니다.
+      rl.close(); // 입력 스트림을 닫습니다.
+    }
+  }
 });
-
-rl.on("close", () => {});
-
-module.exports = { sumNumbers };
