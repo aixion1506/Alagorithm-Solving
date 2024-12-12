@@ -2,6 +2,7 @@ const readline = require("readline");
 
 let numbers = [];
 let rl;
+let N;
 
 function readlineModule() {
   rl = readline.createInterface({
@@ -20,8 +21,8 @@ function startReadline() {
   readlineModule();
 
   rl.on("line", (line) => {
-    if (numbers.length === 0) {
-      const n = parseInt(line, 10);
+    if (N === undefined) {
+      N = parseInt(line, 10);
     } else {
       numbers = line.split(" ").map(Number);
 
@@ -33,5 +34,7 @@ function startReadline() {
     }
   });
 }
+
+startReadline();
 
 module.exports = { findMinMax, startReadline };
