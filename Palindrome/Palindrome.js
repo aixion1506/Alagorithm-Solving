@@ -23,7 +23,8 @@ function startReadline() {
   rl.on("line", (line) => {
     N = line;
     console.log("result", N);
-    isPalindrome(N);
+    const result = isPalindrome(N);
+    console.log(result);
 
     rl.close();
   });
