@@ -1,31 +1,27 @@
-const { isPalindrome } = require("./palindrome"); // 경로를 수정하세요
+// palindrome.test.js
+const { isPalindrome } = require("./Palindrome.js");
 
-describe("Palindrome Test Cases", () => {
-  test("should return 1 for a palindrome word 'level'", () => {
+describe("isPalindrome", () => {
+  test("returns 1 for 'level'", () => {
     expect(isPalindrome("level")).toBe(1);
   });
 
-  test("should return 0 for a non-palindrome word 'baekjoon'", () => {
-    expect(isPalindrome("baekjoon")).toBe(0);
-  });
-
-  test("should return 1 for a single character 'a'", () => {
-    expect(isPalindrome("a")).toBe(1);
-  });
-
-  test("should return 1 for a palindrome word with even length 'abba'", () => {
-    expect(isPalindrome("abba")).toBe(1);
-  });
-
-  test("should return 0 for a non-palindrome word 'hello'", () => {
-    expect(isPalindrome("hello")).toBe(0);
-  });
-
-  test("should return 1 for a palindrome word with odd length 'racecar'", () => {
+  test("returns 1 for 'racecar'", () => {
     expect(isPalindrome("racecar")).toBe(1);
   });
 
-  test("should return 0 for a longer non-palindrome word 'abcdefgh'", () => {
-    expect(isPalindrome("abcdefgh")).toBe(0);
+  test("returns 0 for 'hello'", () => {
+    expect(isPalindrome("hello")).toBe(0);
+  });
+
+  test("returns 1 for an empty string", () => {
+    expect(isPalindrome("")).toBe(1);
+  });
+
+  test("returns 1 for 'A man a plan a canal Panama'", () => {
+    const input = "A man a plan a canal Panama"
+      .replace(/[^A-Za-z]/g, "")
+      .toLowerCase();
+    expect(isPalindrome(input)).toBe(1);
   });
 });
