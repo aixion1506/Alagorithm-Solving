@@ -9,6 +9,12 @@ function startReadline() {
   console.log(result);
 }
 
-startReadline();
+if (require.main === module) {
+  startReadline();
+}
 
 module.exports = { isPalindrome };
+
+/** 예시
+ *  echo "level" | nodemon Palindrome
+ */
